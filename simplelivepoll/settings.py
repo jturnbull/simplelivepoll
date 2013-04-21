@@ -84,9 +84,9 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-AUTHENTICATION_BACKENDS = (
-    'admin_sso.auth.DjangoSSOAuthBackend',
-)
+# AUTHENTICATION_BACKENDS = (
+#     'admin_sso.auth.DjangoSSOAuthBackend',
+# )
 LOGIN_URL = reverse_lazy('auth_login')
 LOGOUT_URL = reverse_lazy('auth_logout')
 LOGIN_REDIRECT_URL = '/'
@@ -104,7 +104,7 @@ INSTALLED_APPS = (
     # Libraries
     'incuna_storages',
 
-    'admin_sso',
+    # 'admin_sso',
     'crispy_forms',
     # 'queued_storage',
     # 'djcelery',  # For queued_storage

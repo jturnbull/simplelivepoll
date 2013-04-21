@@ -4,8 +4,7 @@
 <!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
-{% load feincms_page_tags %}
-{% load feincms_tags %}
+
 {#% load navigationtags %#}
 
 <head>
@@ -73,7 +72,6 @@
                     <div class="structure">
                         {% block header_content %}
                             <nav id="site-nav">
-                                {% feincms_page_menu feincms_page '' 1 1 %}
                             </nav>
                         {% endblock header_content %}
                     </div>
@@ -101,7 +99,6 @@
                         {% endblock page_title %}
                         {% block page_content %}
                             {% block content %}
-                                {% feincms_render_region feincms_page 'main' request %}
                             {% endblock content %}
                         {% endblock page_content %}
                     </div>
