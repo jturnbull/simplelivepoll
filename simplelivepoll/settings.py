@@ -19,11 +19,11 @@ DATABASES = {'default': dj_database_url.config(default='postgres://localhost/sim
 
 CACHES = {'default': django_cache_url.config()}
 
-ADMINS = (('Admin', 'bugs@incuna.com'),)
+ADMINS = (('Admin', 'james@incuna.com'),)
 MANAGERS = ADMINS
 ADMIN_EMAILS = zip(*ADMINS)[1]
 EMAIL_SUBJECT_PREFIX = '[simplelivepoll] '
-SERVER_EMAIL = DEFAULT_FROM_EMAIL = 'info@incuna.com'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL = 'james@incuna.com'
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 
 TIME_ZONE = 'UTC'
@@ -66,7 +66,6 @@ mimetypes.add_type('text/x-component', '.htc')
 TEMPLATE_DEBUG = DEBUG
 TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
-    'feincms.context_processors.add_page_if_missing',  # frequently causes transaction aborted errors
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,14 +103,12 @@ INSTALLED_APPS = (
 
     # Libraries
     'incuna_storages',
-    'feincms',
-    'feincms.module.page',
-    'feincms.module.medialibrary',
+
     'admin_sso',
     'crispy_forms',
-    'queued_storage',
-    'djcelery',  # For queued_storage
-    'kombu.transport.django',  # For Celery Django database broker
+    # 'queued_storage',
+    # 'djcelery',  # For queued_storage
+    # 'kombu.transport.django',  # For Celery Django database broker
     'south',
     'debug_toolbar',
     'django_extensions',
@@ -180,10 +177,7 @@ BROKER_URL = os.environ.get('BROKER_URL', 'django://')
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
 INTERNAL_IPS = ('127.0.0.1',)
 
-# FeinCMS
-FEINCMS_RICHTEXT_INIT_CONTEXT = {
-    'TINYMCE_JS_URL': '/direct-static/scripts/tiny_mce/tiny_mce.js',
-}
+
 
 # Sorl settings
 THUMBNAIL_DEBUG = DEBUG
