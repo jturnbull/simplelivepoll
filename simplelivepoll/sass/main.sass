@@ -1,0 +1,54 @@
+// Recommended directory structure
+// sass
+// ├── components
+// │   ├── _header.sass
+// │   ├── _footer.sass
+// │   ├── _forms.sass
+// │   └── _buttons.sass
+// ├── globals
+// │   ├── _mixins.sass
+// │   ├── _variables.sass
+// ├── plugins (add version numbers inside file if applicable)
+// │   └── _fancybox.sass
+// ├── pages
+// │   ├── _dashboard.sass
+// │   └── _profile.sass
+
+// Recommended reading material:
+// https://github.com/styleguide/css
+// http://smacss.com/book/ (free)
+
+// Basic rules
+// - Do not overqualify selectors with element names
+//   Read: http://goo.gl/rz8qm
+//   - eg. div.className img#className
+// - Avoid nesting more than 3 levels deep, for the same reasons as above
+// - Use // for commenting, avoid using /* */
+
+// Import compass - http://compass-style.org/
+@import compass/css3
+
+@import globals/variables
+@import globals/colors
+
+// Uncomment to enable sprites. See globals/_sprites.sass for more info.
+// @import globals/sprites
+
+// Custom mixins not found in compass
+@import globals/mixins
+@import globals/helpers
+
+@import globals/fonts
+@import globals/reset
+
+@import plugins/pie
+
+@import components/structure
+@import components/typography
+
+@import components/forms
+@import components/buttons
+@import components/messages
+
+// Print styles, keep at the bottom
+@import globals/print

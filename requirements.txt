@@ -1,0 +1,26 @@
+boto>=2.5.2
+celery==2.5.5 # Match version to django-celery
+django>=1.4.1
+django-admin-sso>=0.1.1
+django-cache-url>=0.3
+django-celery==2.5.5 # For django-queued-storage
+django-crispy-forms>=1.1.4
+django-debug-toolbar>=0.9.4
+django-extensions==0.9
+django-mptt>=0.5.2
+django-never-cache-post>=0.1.1
+django-pagination>=1.0.7
+django-queued-storage==0.6
+django-storages==1.1.4
+dj-database-url>=0.2
+FeinCMS>=1.6.2
+gunicorn>=0.14.5
+pillow>=1.7.7
+psycopg2>=2.4.5
+pylibmc>=1.2.3
+pytz>=2012d
+raven>=2.0.0
+sorl-thumbnail==11.12
+South>=0.7.6
+
+incuna-storages>=1.0

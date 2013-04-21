@@ -1,0 +1,42 @@
+%clearfix
+    .lt-ie8 &
+        zoom: 1
+    &:before, &:after
+        content: ""
+        display: table
+    &:after
+        clear: both
+
+// Use this helper when replacing text with an image in a block level element
+%image-replace
+    background-color: transparent
+    border: 0
+    overflow: hidden
+    &:before
+        content: ""
+        display: block
+        width: 0
+        height: 100%
+    .lt-ie8 &
+        text-indent: -9999px
+
+%inline-block
+    display: -moz-inline-box
+    -moz-box-orient: vertical
+    display: inline-block
+    vertical-align: middle
+    .lt-ie8 &
+        display: inline
+        vertical-align: auto
+        zoom: 1
+
+// @extend %vertical-center on the parent of the target
+// @extend %inline-block and font-size on the target
+%vertical-center
+    font:
+        size: 0
+    &:before
+        content: ''
+        display: inline-block
+        vertical-align: middle
+        height: 100%

@@ -1,0 +1,48 @@
+***************
+*** 20,30 ****
+  
+  CACHES = {'default': django_cache_url.config(default='pymemcached://127.0.0.1:11211')}
+  
+  ADMINS = (('Admin', 'bugs@incuna.com'),)
+  MANAGERS = ADMINS
+  ADMIN_EMAILS = zip(*ADMINS)[1]
+  EMAIL_SUBJECT_PREFIX = '[concerta] '
+- SERVER_EMAIL = DEFAULT_FROM_EMAIL = 'ePatient <epatient@epatient.co.uk>'
+  EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+  
+  TIME_ZONE = 'UTC'
+--- 20,36 ----
+  
+  CACHES = {'default': django_cache_url.config(default='pymemcached://127.0.0.1:11211')}
+  
++ if DEBUG:
++     # Don't cache pages when in debug
++     CACHE_MIDDLEWARE_SECONDS = 0
++ 
++ SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
++ 
+  ADMINS = (('Admin', 'bugs@incuna.com'),)
+  MANAGERS = ADMINS
+  ADMIN_EMAILS = zip(*ADMINS)[1]
+  EMAIL_SUBJECT_PREFIX = '[concerta] '
++ SERVER_EMAIL = DEFAULT_FROM_EMAIL = 'ePatient <epatient@incuna.com>'
+  EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+  
+  TIME_ZONE = 'UTC'
+***************
+*** 87,93 ****
+      'django.middleware.transaction.TransactionMiddleware',
+      'rewrite_external_links.middleware.RewriteExternalLinksMiddleware',
+      'pagination.middleware.PaginationMiddleware',
+-     # 'django.middleware.cache.FetchFromCacheMiddleware',
+      'debug_toolbar.middleware.DebugToolbarMiddleware',
+  )
+  
+--- 100,106 ----
+      'django.middleware.transaction.TransactionMiddleware',
+      'rewrite_external_links.middleware.RewriteExternalLinksMiddleware',
+      'pagination.middleware.PaginationMiddleware',
++     'django.middleware.cache.FetchFromCacheMiddleware',
+      'debug_toolbar.middleware.DebugToolbarMiddleware',
+  )
+  
