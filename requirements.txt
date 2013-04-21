@@ -18,10 +18,10 @@ dj-database-url>=0.2
 gunicorn>=0.14.5
 pillow>=1.7.7
 psycopg2>=2.4.5
-#pylibmc>=1.2.3
+pylibmc>=1.2.3
 pytz>=2012d
-#raven>=2.0.0
-#sorl-thumbnail==11.12
+raven>=2.0.0
+sorl-thumbnail==11.12
 South>=0.7.6
 
 incuna-storages>=1.0
