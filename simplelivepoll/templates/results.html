@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block page %}
+    <h1>{{ object }}</h1>
+    <dl>
+    {% for answer in object.answer_set.all %}
+    <dt>{{ answer }}</dt>
+    <dd>{{ answer.votes }}</dd>
+    {% endfor %}
+</dl>
+
+<a href="{% url 'nextquestion' %}">Next q</a>
+{% endblock %}

@@ -4,6 +4,7 @@ from orderable.models import Orderable
 class Question(Orderable):
     name = models.CharField(max_length=255)
     live = models.BooleanField(default=False)
+    closed = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.name
