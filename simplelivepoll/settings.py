@@ -74,6 +74,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'never_cache_post',
     'orderable',
+    'raven.contrib.django',
 
     # Django
     'django.contrib.auth',
