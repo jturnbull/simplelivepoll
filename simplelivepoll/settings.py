@@ -6,7 +6,6 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 from django.core.urlresolvers import reverse_lazy
 import django_cache_url
 import dj_database_url
-import djcelery
 
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -106,6 +105,8 @@ INSTALLED_APPS = (
 
     # 'admin_sso',
     'crispy_forms',
+    'orderable',
+
     # 'queued_storage',
     # 'djcelery',  # For queued_storage
     # 'kombu.transport.django',  # For Celery Django database broker
@@ -169,22 +170,7 @@ LOGGING = {
     }
 }
 
-# Celery
-djcelery.setup_loader()
-BROKER_URL = os.environ.get('BROKER_URL', 'django://')
 
 # Debug Toolbar
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
 INTERNAL_IPS = ('127.0.0.1',)
-
-
-
-# Sorl settings
-THUMBNAIL_DEBUG = DEBUG
-THUMBNAIL_SUBDIR = '_thumbs'
-THUMBNAIL_QUALITY = 95
-
-# South
-SOUTH_MIGRATION_MODULES = {
-    'page': 'simplelivepoll.projectmigrations.page',
-}
