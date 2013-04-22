@@ -11,8 +11,8 @@ class AnswerInline(OrderableTabularInline):
 
 class QuestionAdmin(OrderableAdmin):
     inlines = [AnswerInline]
-    list_display = ('__unicode__', 'live', 'closed', 'sort_order_display')
-    list_editable = ('live', 'closed')
+    list_display = ('__unicode__', 'live', 'sort_order_display')
+    list_editable = ('live',)
 
     class Media:
         js = (
