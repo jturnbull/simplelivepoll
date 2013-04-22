@@ -1,21 +1,17 @@
 from django.core.urlresolvers import reverse
 from django.http import Http404
-from django.views.generic import TemplateView, FormView, RedirectView, DetailView
+from django.views.generic import FormView, RedirectView, DetailView
 from django.views.generic.detail import SingleObjectMixin
 
 from .forms import QuestionForm
 from .models import Question
 
 
-class HomeView(TemplateView):
-    template_name = 'home.html'
-
-
-class NextQuestion(RedirectView):
+class HomeView(RedirectView):
     def get_redirect_url(self, **kwargs):
         try:
-            live_question = Question.objects.filter(live=True, closed=False)[0]
-            return reverse('question', args=[live_question.pk])
+            live_question = Question.objects.filter(live=True).order_by('-sort_order')[0]
+            return reverse('question', args=(live_question.pk,))
         except IndexError:
             raise Http404
 
@@ -40,5 +36,6 @@ class QuestionView(FormView, SingleObjectMixin):
 
 
 class ResultView(DetailView):
-    queryset = Question.objects.filter(live=True, closed=True)
+    pk_url_kwarg = 'question_pk'
+    model = Question
     template_name = 'results.html'

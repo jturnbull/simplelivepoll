@@ -14,7 +14,6 @@ urlpatterns = patterns('',
     url(r'^favicon.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'favicon.ico')),
 
     url('^$', views.HomeView.as_view(), name='home'),
-    url('^questions/$', views.NextQuestion.as_view(), name='nextquestion'),
     url('^questions/(?P<pk>\w+)/$', views.QuestionView.as_view(), name='question'),
     url('^results/(?P<pk>\w+)/$', views.ResultView.as_view(), name='results'),
 
