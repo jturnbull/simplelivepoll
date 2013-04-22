@@ -11,4 +11,6 @@ This is a form to submit you answer, which on success, redirects to the relevant
 
 http://127.0.0.1:8000/results/1/
 
+This page should refresh itself on a loop to get the latest results.
+
 The front-end JS just then needs to keep checking the next question (id 2)? until that URL doesn't 404, and redirect to it when it does.
