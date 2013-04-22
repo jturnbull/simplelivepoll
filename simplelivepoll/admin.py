@@ -1,6 +1,7 @@
-from models import *
 from django.contrib import admin
 from orderable.admin import OrderableAdmin, OrderableTabularInline
+
+from .models import Answer, Question
 
 
 class AnswerInline(OrderableTabularInline):
