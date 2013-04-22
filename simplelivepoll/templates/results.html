@@ -9,5 +9,5 @@
         {% endfor %}
     </dl>
 
-    <a href="{% url 'nextquestion' %}">Next q</a>
+    <a href="{{ object.next_question_url }}">Next q</a>
 {% endblock %}
