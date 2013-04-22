@@ -1,8 +1,6 @@
 # Django settings for simplelivepoll project.
-import mimetypes
 import os
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 from django.core.urlresolvers import reverse_lazy
 import django_cache_url
 import dj_database_url
@@ -32,43 +30,16 @@ USE_TZ = True
 LANGUAGE_CODE = 'en-GB'
 USE_I18N = False  # Internationalization
 
-# AWS
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_LOCATION = os.environ.get('AWS_LOCATION', '')
-AWS_S3_SECURE_URLS = False
-AWS_PRELOAD_METADATA = True
-AWS_QUERYSTRING_AUTH = False
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'simplelivepoll')
-AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_S3_CUSTOM_DOMAIN')
-AWS_CLOUDFRONT_STREAMING_DOMAIN = os.environ.get('AWS_CLOUDFRONT_STREAMING_DOMAIN')
-DEFAULT_FILE_STORAGE = os.environ.get('DEFAULT_FILE_STORAGE', 'incuna_storages.backends.S3MediaStorage')
-STATICFILES_STORAGE = os.environ.get('STATICFILES_STORAGE', 'incuna_storages.backends.S3StaticStorage')
-S3_URL = 'http://{0}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
-
 # Static
-MEDIA_ROOT = os.path.join(ROOT_DIR, 'client_media')
-MEDIA_URL = '/client_media/'
-STATICFILES_DIR = os.path.join(PROJECT_DIR, 'static')
-STATICFILES_DIRS = (STATICFILES_DIR,)
-STATIC_ROOT = os.path.join(ROOT_DIR, 'static_media')
-STATIC_URL = os.environ.get('STATIC_URL', S3_URL + 'static/')
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-
-CSS_DEBUG = os.environ.get('CSS_DEBUG', False)
-
-mimetypes.add_type('text/x-component', '.htc')
+MEDIA_ROOT = 'client_media'
+MEDIA_URL = '/media/'
+STATIC_ROOT = 'static_media'
+STATIC_URL = '/static/'
 
 TEMPLATE_DEBUG = DEBUG
-TEMPLATE_CONTEXT_PROCESSORS += (
-    'django.core.context_processors.request',
-)
+TEMPLATE_DIRS = (os.path.join(ROOT_DIR, 'templates'))
 
 MIDDLEWARE_CLASSES = (
-    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,13 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
     'never_cache_post.middleware.NeverCachePostMiddleware',
-    # 'django.middleware.cache.FetchFromCacheMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-# AUTHENTICATION_BACKENDS = (
-#     'admin_sso.auth.DjangoSSOAuthBackend',
-# )
 LOGIN_URL = reverse_lazy('auth_login')
 LOGOUT_URL = reverse_lazy('auth_logout')
 LOGIN_REDIRECT_URL = '/'
@@ -101,21 +68,10 @@ INSTALLED_APPS = (
     'simplelivepoll',
 
     # Libraries
-    'incuna_storages',
-
-    # 'admin_sso',
-    'crispy_forms',
-    'orderable',
-
-    # 'queued_storage',
-    # 'djcelery',  # For queued_storage
-    # 'kombu.transport.django',  # For Celery Django database broker
-    'south',
     'debug_toolbar',
     'django_extensions',
-    'gunicorn',
-    'raven.contrib.django',
     'never_cache_post',
+    'orderable',
 
     # Django
     'django.contrib.auth',
@@ -127,6 +83,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 )
 
+SENTRY_DSN = os.environ.get('SENTRY_DSN')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -157,7 +114,7 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'incuna.default': {
+        'simplelivepoll.default': {
             'handlers': ['sentry', 'console'],
             'level': 'DEBUG',
             'propagate': True,
@@ -169,7 +126,6 @@ LOGGING = {
         },
     }
 }
-
 
 # Debug Toolbar
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}

@@ -1,6 +1,7 @@
 from django.db import models
 from orderable.models import Orderable
 
+
 class Question(Orderable):
     name = models.CharField(max_length=255)
     live = models.BooleanField(default=False)
@@ -8,6 +9,7 @@ class Question(Orderable):
 
     def __unicode__(self):
         return self.name
+
 
 class Answer(Orderable):
     name = models.CharField(max_length=255)
