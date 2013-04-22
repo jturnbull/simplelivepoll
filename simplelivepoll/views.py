@@ -36,6 +36,5 @@ class QuestionView(FormView, SingleObjectMixin):
 
 
 class ResultView(DetailView):
-    pk_url_kwarg = 'question_pk'
     model = Question
     template_name = 'results.html'
