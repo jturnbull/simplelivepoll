@@ -1,14 +1,23 @@
 from models import *
 from django.contrib import admin
+from orderable.admin import OrderableAdmin, OrderableTabularInline
 
 
-class AnswerInline(admin.TabularInline):
+class AnswerInline(OrderableTabularInline):
     model = Answer
     extra = 3
 
 
-class QuestionAdmin(admin.ModelAdmin):
+class QuestionAdmin(OrderableAdmin):
     inlines = [AnswerInline]
+    list_display = ('__unicode__', 'live', 'closed', 'sort_order_display')
+    list_editable = ('live', 'closed')
+
+    class Media:
+        js = (
+            'scripts/libs/jquery-1.9.1.min.js',
+            'scripts/libs/jquery-ui.min.js',
+        )
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)
