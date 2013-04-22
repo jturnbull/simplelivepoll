@@ -16,6 +16,8 @@ DATABASES = {'default': dj_database_url.config(default='postgres://localhost/sim
 
 CACHES = {'default': django_cache_url.config()}
 
+ALLOWED_HOSTS = ['simplelivepoll.herokuapp.com']
+
 ADMINS = (('Admin', 'james@incuna.com'),)
 MANAGERS = ADMINS
 ADMIN_EMAILS = zip(*ADMINS)[1]
