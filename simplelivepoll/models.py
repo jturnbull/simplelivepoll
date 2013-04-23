@@ -1,3 +1,4 @@
+from __future__ import division
 from django.core.urlresolvers import reverse
 from django.db import models
 from orderable.models import Orderable
@@ -21,3 +22,11 @@ class Answer(Orderable):
 
     def __unicode__(self):
         return self.name
+
+    def percentage(self):
+        total = self.question.answer_set.all().aggregate(sum=models.Sum('votes'))['sum']
+        print self.question.answer_set.all().aggregate(sum=models.Sum('votes'))
+        print total
+        print self.votes / total
+        return "%.0f%%" % ((self.votes / total) * 100)
+
