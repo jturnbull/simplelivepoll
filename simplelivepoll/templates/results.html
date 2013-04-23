@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% block extra_script %}
+    <script>
+        results.init({
+            'next': '{{ object.next_question_url }}'
+        });
+    </script>
+{% endblock extra_script %}
+
 {% block content %}
     <h1>{{ object }}</h1>
     <dl>
@@ -9,5 +17,4 @@
         {% endfor %}
     </dl>
 
-    <a href="{{ object.next_question_url }}">Next q</a>
 {% endblock %}
