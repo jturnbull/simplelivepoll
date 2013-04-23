@@ -16,7 +16,6 @@ class QuestionForm(forms.Form):
 
     def increment_answer(self):
         answer = self.cleaned_data['answer']
-        logger.debug('answer has {} votes'.format(answer.votes))
         answer.votes = answer.votes + 1
         answer.save()
         return True
