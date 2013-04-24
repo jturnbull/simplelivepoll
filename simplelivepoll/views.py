@@ -50,7 +50,7 @@ class ResultView(DetailView):
             }
 
             for answer in self.object.answer_set.all():
-                response_data['answers'].append([u'%s' % answer, answer.percentage()])
+                response_data['answers'].append(dict(name=u'%s' % answer, data=[int(answer.percentage())]))
 
             return HttpResponse(json.dumps(response_data), mimetype='application/json')
 
