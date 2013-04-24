@@ -12,7 +12,10 @@ class Question(Orderable):
         return self.name
 
     def next_question_url(self):
-        return reverse('question', args=(self.pk+1,))
+        if Question.objects.filter(pk=self.pk+1).exists():
+            return reverse('question', args=(self.pk+1,))
+        else:
+            return ''
 
 
 class Answer(Orderable):
@@ -25,5 +28,5 @@ class Answer(Orderable):
 
     def percentage(self):
         total = self.question.answer_set.all().aggregate(sum=models.Sum('votes'))['sum']
-        return "%.0f%%" % ((self.votes / total) * 100)
+        return "%.0f" % ((self.votes / total) * 100)
 
