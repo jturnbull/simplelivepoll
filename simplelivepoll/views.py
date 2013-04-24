@@ -1,3 +1,5 @@
+import json
+
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse
 from django.views.generic import FormView, RedirectView, DetailView
@@ -41,9 +43,17 @@ class ResultView(DetailView):
 
     def render_to_response(self, context, **response_kwargs):
         if self.request.is_ajax():
-            # Can has results data as JSON?
-            response = 'hello'
-            return HttpResponse(response, mimetype='application/json')
+
+            response_data = {
+                'question': u'%s' % self.object,
+                'answers': list(),
+            }
+
+            for answer in self.object.answer_set.all():
+                response_data['answers'].append([u'%s' % answer, answer.percentage()])
+
+            return HttpResponse(json.dumps(response_data), mimetype='application/json')
+
         else:
             response_kwargs.setdefault('content_type', self.content_type)
             return self.response_class(
