@@ -28,5 +28,5 @@ class Answer(Orderable):
 
     def percentage(self):
         total = self.question.answer_set.all().aggregate(sum=models.Sum('votes'))['sum']
-        return "%.0f%%" % ((self.votes / total) * 100)
+        return "%.0f" % ((self.votes / total) * 100)
 
