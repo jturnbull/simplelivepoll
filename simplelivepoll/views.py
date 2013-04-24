@@ -1,5 +1,7 @@
+import json
+
 from django.core.urlresolvers import reverse
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.views.generic import FormView, RedirectView, DetailView
 from django.views.generic.detail import SingleObjectMixin
 
@@ -38,3 +40,25 @@ class QuestionView(FormView, SingleObjectMixin):
 class ResultView(DetailView):
     model = Question
     template_name = 'results.html'
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.is_ajax():
+
+            response_data = {
+                'question': u'%s' % self.object,
+                'answers': list(),
+            }
+
+            for answer in self.object.answer_set.all():
+                response_data['answers'].append(dict(name=u'%s' % answer, data=[int(answer.percentage())]))
+
+            return HttpResponse(json.dumps(response_data), mimetype='application/json')
+
+        else:
+            response_kwargs.setdefault('content_type', self.content_type)
+            return self.response_class(
+                request = self.request,
+                template = self.get_template_names(),
+                context = context,
+                **response_kwargs
+            )
