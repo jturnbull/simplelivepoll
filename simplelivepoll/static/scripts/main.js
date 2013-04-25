@@ -68,11 +68,23 @@ var results = {
                 renderTo: graph[0],
                 type: 'column'
             },
+            colors: ['#e85478', '#f290a9', '#823247', '#b7163f'],
             credits : {
                 enabled : false
             },
             title: {
-                text: results.question
+                text: results.question,
+                margin: 50,
+                style: {
+                    width: '250px',
+                    lineHeight: '1.5em'
+
+                }
+            },
+            xAxis: {
+                labels: {
+                    enabled: false
+                }
             },
             yAxis: {
                 min: 0,
@@ -83,7 +95,7 @@ var results = {
             },
             plotOptions: {
                 column: {
-                    pointPadding: 0.2,
+                    pointPadding: 0.1,
                     borderWidth: 0
                 }
             },
@@ -91,7 +103,8 @@ var results = {
                 borderWidth: 0,
                 layout: 'vertical',
                 useHTML: true,
-                itemMarginBottom: 10
+                itemMarginBottom: 10,
+                itemWidth: '100'
 
             },
             series: results.answers
