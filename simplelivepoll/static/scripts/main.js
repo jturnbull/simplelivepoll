@@ -8,6 +8,7 @@ var results = {
         this.graph();
     },
     pollNext: function(url) {
+        var self = this;
         // If the next question is not yet active a 404 is returned.
         // Provide an option to move on to the next question, do not
         // automatically move them on.
@@ -23,11 +24,18 @@ var results = {
                 if(data.status == '404') {
                     window.setTimeout(request, interval);
                 } else {
-                    // alert('The next question is active!');
+                    console.log('question');
+                    self.nextQuestion(url);
                 }
             });
         };
         request();
+    },
+    nextQuestion: function(url) {
+        console.log('test');
+        var message = $('.next-question-message');
+        message.find('a').attr('href', url);
+        message.addClass('show');
     },
     loadResults: function() {
         var results;
@@ -75,6 +83,13 @@ var results = {
                     pointPadding: 0.2,
                     borderWidth: 0
                 }
+            },
+            legend: {
+                borderWidth: 0,
+                layout: 'vertical',
+                useHTML: true,
+                itemMarginBottom: 10
+
             },
             series: results.answers
         });

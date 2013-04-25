@@ -9,13 +9,11 @@
 {% endblock extra_script %}
 
 {% block content %}
-    <h1>{{ object }}</h1>
-    <dl>
-        {% for answer in object.answer_set.all %}
-        <dt>{{ answer }}</dt>
-        <dd>{{ answer.percentage }}</dd>
-        {% endfor %}
-    </dl>
-
     <div class="highcharts"></div>
+{% endblock %}
+
+{% block footer %}
+    <div class="next-question-message">
+        <a href="">The next question is now ready! Tap on this message to view it!</a>
+    </div>
 {% endblock %}
