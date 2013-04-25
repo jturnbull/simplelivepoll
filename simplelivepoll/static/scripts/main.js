@@ -77,8 +77,10 @@ var results = {
                 margin: 50,
                 style: {
                     width: '250px',
-                    lineHeight: '1.5em'
-
+                    lineHeight: '1.5em',
+                    color: '#9a5b6c',
+                    fontSize: '22px',
+                    fontFamily: 'PT Serif'
                 }
             },
             xAxis: {
@@ -90,22 +92,39 @@ var results = {
                 min: 0,
                 max: 100,
                 title: {
-                    text: 'Percentage'
+                    text: 'Percentage',
+                    style: {
+                        color: '#9a5b6c'
+                    }
                 }
             },
             plotOptions: {
                 column: {
                     pointPadding: 0.1,
                     borderWidth: 0
+                },
+                tooltip: '',
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function() {
+                            return this.y + '%';
+                        }
+                    }
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return false;
                 }
             },
             legend: {
                 borderWidth: 0,
                 layout: 'vertical',
-                useHTML: true,
                 itemMarginBottom: 10,
-                itemWidth: '100'
-
+                itemStyle: {
+                    width: 200
+                }
             },
             series: results.answers
         });
