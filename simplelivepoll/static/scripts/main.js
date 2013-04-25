@@ -68,6 +68,9 @@ var results = {
                 renderTo: graph[0],
                 type: 'column'
             },
+            credits : {
+                enabled : false
+            },
             title: {
                 text: results.question
             },

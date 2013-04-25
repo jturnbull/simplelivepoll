@@ -1,6 +1,7 @@
 <!doctype html>
 <head>
   <link rel="stylesheet" href="{{ STATIC_URL }}styles/main.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif:700' rel='stylesheet' type='text/css'>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,7 +11,7 @@
 
 {% block body %}
 <body>
-    <header>{% block header %}{% endblock header %}</header>
+    {% block header %}{% endblock header %}
     <div class="content">{% block content %}{% endblock content %}</div>
     <footer>{% block footer %}{% endblock %}</footer>
 
