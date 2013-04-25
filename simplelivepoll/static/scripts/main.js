@@ -66,22 +66,15 @@ var results = {
         this.chart = new Highcharts.Chart({
             chart: {
                 renderTo: graph[0],
-                type: 'column'
+                type: 'column',
+                marginTop: 20
             },
             colors: ['#e85478', '#f290a9', '#823247', '#b7163f'],
             credits : {
                 enabled : false
             },
             title: {
-                text: results.question,
-                margin: 50,
-                style: {
-                    width: '250px',
-                    lineHeight: '1.5em',
-                    color: '#9a5b6c',
-                    fontSize: '22px',
-                    fontFamily: 'PT Serif'
-                }
+                text: ''
             },
             xAxis: {
                 labels: {
