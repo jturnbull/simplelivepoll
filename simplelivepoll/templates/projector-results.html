@@ -1,0 +1,18 @@
+{% extends "results.html" %}
+
+{% block title %}Turnbull Speech{% endblock title %}
+
+{% block extra_script %}
+    <script>
+        results.init({});
+    </script>
+{% endblock extra_script %}
+
+{% block content %}
+    {{ block.super }}
+
+    <form method="post" action="{{ object.next_projector_url }}">
+        {% csrf_token %}
+        <input type="submit" value="Next Question">
+    </form>
+{% endblock %}

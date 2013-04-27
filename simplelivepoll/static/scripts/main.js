@@ -24,7 +24,6 @@ var results = {
                 if(data.status == '404') {
                     window.setTimeout(request, interval);
                 } else {
-                    console.log('question');
                     self.nextQuestion(url);
                 }
             });
@@ -32,7 +31,6 @@ var results = {
         request();
     },
     nextQuestion: function(url) {
-        console.log('test');
         var message = $('.next-question-message');
         message.find('a').attr('href', url);
         message.addClass('show');
@@ -85,7 +83,7 @@ var results = {
                 min: 0,
                 max: 100,
                 title: {
-                    text: 'Percentage',
+                    text: 'Proportion (%)',
                     style: {
                         color: '#9a5b6c'
                     }

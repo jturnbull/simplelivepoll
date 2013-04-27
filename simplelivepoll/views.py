@@ -62,3 +62,13 @@ class ResultView(DetailView):
                 context = context,
                 **response_kwargs
             )
+
+class ProjectorView(ResultView):
+    template_name = 'projector-results.html'
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.live = True
+        self.object.save()
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)

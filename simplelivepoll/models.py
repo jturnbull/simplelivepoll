@@ -17,6 +17,12 @@ class Question(Orderable):
         else:
             return ''
 
+    def next_projector_url(self):
+        if Question.objects.filter(pk=self.pk+1).exists():
+            return reverse('projector-results', args=(self.pk+1,))
+        else:
+            return ''
+
 
 class Answer(Orderable):
     name = models.CharField(max_length=255)
