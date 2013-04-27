@@ -38,6 +38,17 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = 'static_media'
 STATIC_URL = '/static/'
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+
 TEMPLATE_DEBUG = DEBUG
 TEMPLATE_DIRS = (os.path.join(ROOT_DIR, 'templates'))
 
@@ -75,6 +86,7 @@ INSTALLED_APPS = (
     'never_cache_post',
     'orderable',
     'raven.contrib.django',
+    'compressor',
 
     # Django
     'django.contrib.auth',
