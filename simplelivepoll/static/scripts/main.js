@@ -83,7 +83,7 @@ var results = {
                 min: 0,
                 max: 100,
                 title: {
-                    text: 'Responses (%)',
+                    text: 'Proportion (%)',
                     style: {
                         color: '#9a5b6c'
                     }
