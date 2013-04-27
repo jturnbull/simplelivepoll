@@ -7,7 +7,7 @@ images_dir = 'simplelivepoll/static/images'
 javascripts_dir = 'simplelivepoll/static/scripts'
 http_generated_images_path = '../images'
 
-output_style = (environment == :development) ? :expanded : :compact
+output_style = :compressed
 line_comments = (environment == :development) ? true : false
 
 preferred_syntax = :sass
