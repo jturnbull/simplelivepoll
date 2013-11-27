@@ -1,12 +1,16 @@
 @import compass/css3
 
+$grey: #252525
+$action: #00488f
+$action-active: darken( desaturate( $action , 29 ), 11 )
+
 *
     @include box-sizing(border-box)
 
 body
     margin: 0
     padding: 0
-    color: #252525
+    color: $grey
     font:
         family: 'PT Sans', sans-serif
         size: 14px
@@ -28,14 +32,14 @@ h1
 .results-title
     font:
         size: 22px
-    color: #9a5b6c
+    color: $grey
     text-align: center
     line-height: 1.5em
 
 .projector-title
     font:
         size: 64px
-    color: #9a5b6c
+    color: $grey
     text-align: center
     line-height: 3.5em
 
@@ -60,11 +64,11 @@ input[type="submit"]
     @include border-radius(2px)
     text:
         align: center
-        shadow: 0 1px 2px darken(#cb627e, 10%)
+        shadow: 0 1px 2px darken($action-active, 10%)
     border: 0
     padding: 0
     margin: 0
-    @include background(linear-gradient(top, #ef7898 0%,#cb627e 100%))
+    @include background(linear-gradient(top, $action 0%, $action-active 100%))
     color: #fff
     width: 100%
     line-height: 40px
@@ -76,7 +80,7 @@ input[type="submit"]
 
 .next-question-message
     $message-height: 100px
-    background: lighten(#ef7898, 10%)
+    background: lighten($action, 10%)
     width: 100%
     height: $message-height
     margin:
@@ -92,7 +96,7 @@ input[type="submit"]
         text:
             align: center
             decoration: none
-            shadow: 0 1px 2px darken(#cb627e, 5%)
+            shadow: 0 1px 2px darken($action-active, 5%)
         font:
             size: 17px
         color: #fff
