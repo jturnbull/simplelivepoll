@@ -67,7 +67,7 @@ var results = {
                 type: 'column',
                 marginTop: 20
             },
-            colors: ['#e85478', '#f290a9', '#823247', '#b7163f'],
+            colors: ['#00AEEF', '#00488f', '#c0d72e'],
             credits : {
                 enabled : false
             },
@@ -85,7 +85,7 @@ var results = {
                 title: {
                     text: 'Proportion (%)',
                     style: {
-                        color: '#9a5b6c'
+                        color: '#252525'
                     }
                 }
             },
