@@ -16,7 +16,10 @@ DATABASES = {'default': dj_database_url.config(default='postgres://localhost/sim
 
 CACHES = {'default': django_cache_url.config()}
 
-ALLOWED_HOSTS = ['simplelivepoll.herokuapp.com', 'turnbullspeech.co.uk', 'www.turnbullspeech.co.uk']
+ALLOWED_HOSTS = [
+    'livepoll.incuna.com', 'www.livepoll.incuna.com',
+    'turnbullspeech.co.uk', 'www.turnbullspeech.co.uk'
+]
 
 ADMINS = (('Admin', 'james@incuna.com'),)
 MANAGERS = ADMINS
